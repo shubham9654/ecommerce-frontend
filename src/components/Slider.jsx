@@ -16,7 +16,7 @@ const Slider = () => {
   console.log(slideIndex)
 
   return (
-    <div className="h-screen w-full relative overflow-hidden">
+    <div className="w-full relative overflow-hidden" style={{ height: "calc(100vh - 4rem)"}}>
       <span
         className="w-12	h-12 bg-slate-300 rounded-full flex items-center justify-center absolute top-0 bottom-0 left-2.5 m-auto	cursor-pointer z-50 opacity-50"
         onClick={() => handleClick("left")}
@@ -29,7 +29,7 @@ const Slider = () => {
           <div className="flex h-full w-full" style={{ transform: `translateX(${slideIndex * -100}vw)`, transition: "all 1.5s ease" }}>
             {
               sliderItems.map((el) => (
-                <div key={el.id} className={`flex items-center h-screen bg-[#f5fafd] bg-[${el.bg}]`} style={{minWidth: "100vw"}}>
+                <div key={el.id} className={`flex items-center h-screen `} style={{minWidth: "100vw", backgroundColor: el.bg }}>
                   <div className="w-2/4 h-full flex justify-center">
                     <img className="h-[85%]" alt="slider_image" src={el.img} />
                   </div>
