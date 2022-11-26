@@ -12,6 +12,8 @@ import product5 from "./png/product5.png";
 import product6 from "./png/product6.png";
 import product7 from "./png/product7.png";
 import product8 from "./png/product8.png";
+import product9 from "./png/product9.png";
+import product10 from "./png/product10.png";
 
 // all svg imports
 export const svgAssets = {
@@ -39,5 +41,7 @@ export const pngAssets = {
 		product6,
 		product7,
 		product8,
+		product9,
+		product10
 	}
 };

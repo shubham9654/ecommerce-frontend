@@ -6,7 +6,7 @@ const Product = ({ item }) => {
       <div className="w-[200px] h-[200px] rounded-full bg-white absolute"></div>
       <img className="h-3/4 z-10" alt="product_img" src={item.img} />
       <div
-        className="info w-full h-full top-0 left-0 flex items-center justify-center absolute bg-[rgba(0,0,0,0.2)] z-20 opacity-0 hover:opacity-100 cursor-pointer"
+        className="info w-full h-full top-0 left-0 flex items-center justify-center absolute bg-[rgba(0,0,0,0.1)] z-20 opacity-0 hover:opacity-100 cursor-pointer"
         style={{ transition: "all 0.5s ease"}}
       >
         <span

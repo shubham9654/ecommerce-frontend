@@ -74,5 +74,13 @@ export const popularProducts = [
   {
     id:8,
     img: pngAssets.products.product8
+  },
+  {
+    id:9,
+    img: pngAssets.products.product9
+  },
+  {
+    id:10,
+    img: pngAssets.products.product10
   }
 ]
