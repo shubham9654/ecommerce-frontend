@@ -6,7 +6,7 @@ import Products from "../components/Products";
 
 const ProductList = () => {
   return (
-    <div className="product_page">
+    <div className="product_list_page">
       <Navbar />
       <Announcement />
       <h1 className="text-3xl font-bold m-5">Dresses</h1>
@@ -33,7 +33,7 @@ const ProductList = () => {
             <option className="capitalize">Newest</option>
             <option className="capitalize">Price (asc)</option>
             <option className="capitalize">Black (desc)</option>
-          </select> 
+          </select>
         </div>
       </div>
       <Products />

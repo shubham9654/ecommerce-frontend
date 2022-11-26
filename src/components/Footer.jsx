@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div className="flex">
       <div className="flex-[1] flex flex-col p-5">
-        <h1 className="text-3xl font-bold">Ecom</h1>
+        <h1 className="text-3xl font-bold">E.COM</h1>
         <div className="my-5">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates architecto saepe facilis ab. Praesentium, beatae? Nobis nulla consequatur magni tempora.
         </div>
