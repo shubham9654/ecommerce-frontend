@@ -1,7 +1,7 @@
 
 const CategoryItem = ({ item }) => {
   return (
-    <div className="h-[60vh] w-full relative m-1">
+    <div className="h-[63vh] w-full relative m-1">
       <img
         className="object-cover h-full w-full"
         alt="category_img"
