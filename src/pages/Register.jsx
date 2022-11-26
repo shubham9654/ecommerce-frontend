@@ -4,7 +4,7 @@ const Register = () => {
     <div className="login w-screen h-screen flex items-center justify-center">
       <div className="p-5 w-96 bg-white rounded-md ">
         <h1 className="font-light text-2xl text-normal mb-5">Create Account</h1>
-        <form className="flex flex-wrap">
+        <form className="flex flex-col">
           <span className="font-medium text-[13px]">Name</span>
           <input
             className="text-[14px] mb-5 py-0.5 px-1 w-full focus:outline-none border-solid border-2 outline-slate-400"
