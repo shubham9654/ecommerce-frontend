@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <div className="h-16 py-2.5 px-10 flex items-center justify-between">
       <div className="flex-[1]">
-        <span className="font-bold text-3xl cursor-pointer">E.Com</span>
+        <span className="font-bold text-3xl cursor-pointer">Ecom</span>
       </div>
       <div className="flex-[1] flex items-center justify-center ">
         <div className="border-solid border-2 p-1">
