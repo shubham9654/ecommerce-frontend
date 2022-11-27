@@ -5,6 +5,12 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    screens: {
+      ms: {
+        "max": "640px"
+        // => @media (mxn-width: 640px) { ... }
+      }
+    }
   },
   plugins: [],
 }
