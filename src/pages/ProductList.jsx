@@ -9,7 +9,7 @@ const ProductList = () => {
     <div className="product_list_page">
       <Navbar />
       <Announcement />
-      <h1 className="text-3xl font-bold m-5">Dresses</h1>
+      <h1 className="text-3xl font-bold m-5 ">Dresses</h1>
       <div className="flex items-center justify-between">
         <div className="m-5">
           <label className="text-xl font-semibold capitalize mr-2.5">filter products:</label>
