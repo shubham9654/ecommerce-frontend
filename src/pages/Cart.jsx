@@ -80,9 +80,9 @@ const Cart = () => {
             </div>
             <div className="my-7 flex items-center justify-between">
               <span>Shipping Discount</span>
-              <span>$ 5</span>
+              <span>-$ 5</span>
             </div>
-            <div className="my-7 text-2xl font-medium">
+            <div className="my-7 flex items-center justify-between text-2xl font-medium">
               <span>Total</span>
               <span>$ 70</span>
             </div>
