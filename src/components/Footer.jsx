@@ -2,7 +2,7 @@ import { Email, Facebook, Instagram, Phone, Pinterest, Room, Twitter } from "@mu
 
 const Footer = () => {
   return (
-    <div className="flex">
+    <div className="flex ms:flex-col">
       <div className="flex-[1] flex flex-col p-5">
         <h1 className="text-3xl font-bold">Ecom</h1>
         <div className="my-5">
@@ -23,7 +23,8 @@ const Footer = () => {
           </span>
         </div>
       </div>
-      <div className="flex-[1] p-5">
+
+      <div className="flex-[1] p-5 ms:hidden">
         <h3 className="text-xl font-bold mb-6">Useful Links</h3>
         <ul className="flex flex-wrap">
           <li className="w-1/2">Home</li>
@@ -36,11 +37,12 @@ const Footer = () => {
           <li className="w-1/2">Women Fashion</li>
         </ul>
       </div>
-      <div className="flex-[1] p-5">
+
+      <div className="flex-[1] p-5 ms:bg-slate-100">
         <h3 className="text-xl font-bold mb-5">Contact</h3>
         <div className="mb-2.5">
           <Room className="mr-2.5 flex" />
-          Lorem ipsum, dolor sit amet consectetur adip
+          Lorem ipsum, dolor sit amet consect
         </div>
         <div className="mb-2.5 flex">
           <Phone className="mr-2.5" />

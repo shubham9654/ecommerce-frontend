@@ -3,7 +3,7 @@ import CategoryItem from "./CategoryItem"
 
 const Categories = () => {
   return (
-    <div className="categoires flex p-5 justify-between">
+    <div className="categoires w-full flex p-5 justify-between  ms:flex-col ms:p-0">
       {
         categories.map((item, index) => (
           <CategoryItem

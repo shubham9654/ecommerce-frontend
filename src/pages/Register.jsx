@@ -2,7 +2,7 @@
 const Register = () => {
   return (
     <div className="login w-screen h-screen flex items-center justify-center">
-      <div className="p-5 w-96 bg-white rounded-md ">
+      <div className="p-5 w-96 bg-white rounded-md ms:w-80">
         <h1 className="font-light text-2xl text-normal mb-5">Create Account</h1>
         <form className="flex flex-col">
           <span className="font-medium text-[13px]">Name</span>

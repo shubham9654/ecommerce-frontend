@@ -10,17 +10,19 @@ const Product = () => {
     <div className="product_page">
       <Navbar />
       <Announcement />
-      <div className="p-[50px] flex">
+      <div className="p-[50px] flex ms:p-0 ms:flex-col">
+
         <div className="flex-[1]">
-          <img className="w-100 h-[70vh]" alt="product_image" src={pngAssets.products.product6} />
+          <img className="w-100 h-[70vh] ms:h-full" alt="product_image" src={pngAssets.products.product6} />
         </div>
-        <div className="flex-[1] px-[50px] py-5">
+    
+        <div className="flex-[1] px-[50px] py-5 ms:px-5">
 
           <h1 className="text-4xl font-light">Title</h1>
           <p className="my-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime esse harum delectus praesentium laborum, aspernatur, molestiae et sit accusantium tempore unde ipsum omnis eos veritatis reiciendis dolores? Natus, explicabo ratione!</p>
           <span className="font-extralight text-3xl">$20.22</span>
 
-          <div className="my-8 w-1/2 flex items-center justify-between">
+          <div className="my-8 w-1/2 flex items-center justify-between ms:w-full">
             <div className="flex items-center">
               <label className="text-xl font-extralight capitalize mr-2.5">Color</label>
               <span className="w-5 h-5 rounded-full bg-green-300 mr-2 cursor-pointer"></span>
@@ -40,7 +42,7 @@ const Product = () => {
 
           </div>
 
-          <div className="flex items-center justify-between w-1/2">
+          <div className="flex items-center justify-between w-1/2 ms:w-full">
             <div className="flex items-center font-bold	">
               <Remove className="cursor-pointer"/>
               <span
