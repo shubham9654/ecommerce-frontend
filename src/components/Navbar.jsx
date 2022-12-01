@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Search, ShoppingCartOutlined } from "@mui/icons-material";
 import { Badge } from "@mui/material";
 
@@ -7,9 +8,11 @@ const Navbar = () => {
       className="h-16 py-2.5 px-10 flex items-center justify-between  ms:h-12 ms:px-1"
     >
       <div className="flex-[1]">
-        <span className="font-bold text-3xl cursor-pointer  ms:text-2xl">
-          Ecom
-        </span>
+        <Link to="/">
+          <span className="font-bold text-3xl cursor-pointer  ms:text-2xl">
+            Ecom
+          </span>
+        </Link>
       </div>
       <div className="flex-[1] flex items-center justify-center ">
         <div className="border-solid border-2 p-1">
