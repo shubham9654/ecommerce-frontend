@@ -31,7 +31,7 @@ const Slider = () => {
                   <div className="w-2/4 h-full flex justify-center ms:hidden">
                     <img className="h-[85%]" alt="slider_image" src={el.img} />
                   </div>
-                  <div lassName="w-2/4 p-12">
+                  <div className="w-2/4 p-12">
                     <div className="font-bold text-7xl uppercase ms:text-5xl">{el.title}</div>
                     <p className="uppercase my-12 text-xl font-medium break-all	w-4/5 ms:text-lg">{el.desc}</p>
                     <button className="p-2.5 cursor-pointer text-x 0l bg-transparent uppercase border-2 border-solid border-slate-500	">shop Now</button>

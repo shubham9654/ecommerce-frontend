@@ -1,7 +1,7 @@
 import axios from 'axios'
-import { baseUrl, headers } from './common.api'
+import { baseUrl } from './common.api'
 
-export const getProducts = async () => {
+export const getProductService = async () => {
   const products = await axios.get(
     `${baseUrl}/products`,
     // headers

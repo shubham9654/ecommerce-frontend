@@ -1,15 +1,15 @@
 import { all, call, put, takeEvery } from "redux-saga/effects";
-import { getProducts } from "../services/api/product.api";
-import { setProducts } from "../store/actions/product.action";
+import { getProductService } from "../services/api/product.api";
+import { getProducts, setProductAction } from "../store/actions/product.action";
 
 
-function* getProductSaga(data) {
+function* getProductSaga() {
   try {
-    const response = yield call(getProducts);
-    yield put(setProducts(response));
-    yield data.callback()
+    const response = yield call(getProductService);
+    yield put(setProductAction({ data: response?.data?.products || []}));
   } catch (err) {
-    console.log(err);
+    yield put(setProductAction({ data: [] }));
+    console.log({ err });
   };
 };
 

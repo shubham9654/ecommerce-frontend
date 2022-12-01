@@ -1,9 +1,9 @@
 export const getProducts = "GET_PRODUCTS";
 export const setProducts = "SET_PRODUCTS";
 
-export const getProductAction = ({ callback }) => ({
+export const getProductsAction = () => ({
   type: getProducts,
-  callback
+  // callback
 });
 
 
