@@ -9,8 +9,8 @@ const Navbar = () => {
     >
       <div className="flex-[1]">
         <Link to="/">
-          <span className="font-bold text-3xl cursor-pointer  ms:text-2xl">
-           Zathura
+          <span className="font-bold text-4xl cursor-pointer  ms:text-2xl">
+            Ekart
           </span>
         </Link>
       </div>
