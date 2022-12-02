@@ -1,11 +1,23 @@
-import { Add, Remove } from "@mui/icons-material"
-import { pngAssets } from "../assets/asset"
+import { Add, Remove } from "@mui/icons-material";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from "react-router-dom";
+// import { pngAssets } from "../assets/asset"
 import Announcement from "../components/Announcement"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
 import Newsletter from "../components/Newsletter"
+import { getSingleProductAction } from "../store/actions/product.action";
 
 const Product = () => {
+  const dispatch = useDispatch();
+  const { productId } = useParams();
+  const productData  = useSelector(state => state.products.selectedProduct);
+
+  useEffect(() => {
+    dispatch(getSingleProductAction({ productId }));
+  }, [productId]);
+
   return (
     <div className="product_page">
       <Navbar />
@@ -13,30 +25,30 @@ const Product = () => {
       <div className="p-[50px] flex ms:p-0 ms:flex-col">
 
         <div className="flex-[1]">
-          <img className="w-100 h-[70vh] ms:h-full" alt="product_image" src={pngAssets.products.product6} />
+          <img className="w-100 h-[70vh] ms:h-full" alt="product_image" src={productData.img} />
         </div>
     
         <div className="flex-[1] px-[50px] py-5 ms:px-5">
 
-          <h1 className="text-4xl font-light">Title</h1>
-          <p className="my-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime esse harum delectus praesentium laborum, aspernatur, molestiae et sit accusantium tempore unde ipsum omnis eos veritatis reiciendis dolores? Natus, explicabo ratione!</p>
-          <span className="font-extralight text-3xl">$20.22</span>
+          <h1 className="text-4xl font-light">{productData.title}</h1>
+          <p className="my-5">{productData.desc}</p>
+          <span className="font-extralight text-3xl">{productData.price}</span>
 
           <div className="my-8 w-1/2 flex items-center justify-between ms:w-full">
             <div className="flex items-center">
               <label className="text-xl font-extralight capitalize mr-2.5">Color</label>
-              <span className="w-5 h-5 rounded-full bg-green-300 mr-2 cursor-pointer"></span>
-              <span className="w-5 h-5 rounded-full bg-gray-400 mr-2 cursor-pointer"></span>
-              <span className="w-5 h-5 rounded-full bg-blue-400 mr-2 cursor-pointer"></span>
+              <span className={`w-5 h-5 rounded-full bg-slate-400 mr-2 cursor-pointer`}></span>
+              {/* <span className="w-5 h-5 rounded-full bg-gray-400 mr-2 cursor-pointer"></span>
+              <span className="w-5 h-5 rounded-full bg-blue-400 mr-2 cursor-pointer"></span> */}
             </div>
 
             <div className="flex items-center">
               <label className="text-xl font-extralight capitalize mr-2.5">Size</label>
               <select className="border border-gray-500 focus:outline-none p-1.5 cursor-pointer uppercase">
-                <option className="uppercase">Xxl</option>
-                <option className="uppercase">Xl</option>
+                <option className="uppercase">{productData.size}</option>
+                {/* <option className="uppercase">Xl</option>
                 <option className="uppercase">L</option>
-                <option className="uppercase">M</option>
+                <option className="uppercase">M</option> */}
               </select>
             </div>
 

@@ -1,27 +1,24 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { getProductsAction } from "../store/actions/product.action";
-import { popularProducts } from "../utils/data";
+import { getAllProductsAction } from "../store/actions/product.action";
+// import { popularProducts } from "../utils/data";
 import Product from "./Product";
 
-const Products = () => {
+const Products = ({ category, filters, sort }) => {
   const dispatch = useDispatch();
-  const productData  = useSelector(state => state.products)
-
-  console.log(productData)
-
+  const allProductData  = useSelector(state => state.products.allProducts);
 
   useEffect(() => {
-    dispatch(getProductsAction())
-  }, []);
+    dispatch(getAllProductsAction({ category }));
+  }, [category]);
 
   return (
     <div className="products p-5 flex flex-wrap justify-between ms:p-2.5">
       {
-        productData.length > 0 ? (popularProducts.map((item) => (
+        allProductData.length > 0 ? (allProductData.map((item) => (
           <Product
-            key={`product_id_${item.id}`}
-            img={item.img}
+            key={`product_id_${item._id}`}
+            item={item}
           />
         )))
         : null

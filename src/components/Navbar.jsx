@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className="flex-[1]">
         <Link to="/">
           <span className="font-bold text-3xl cursor-pointer  ms:text-2xl">
-            Ecom
+           Zathura
           </span>
         </Link>
       </div>
