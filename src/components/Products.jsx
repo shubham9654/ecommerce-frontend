@@ -1,11 +1,12 @@
 
 // import { popularProducts } from "../utils/data";
+import { useRef } from "react";
 import Product from "./Product";
 
-const Products = ({ allProducts }) => {
+const Products = ({ refDiv, allProducts }) => {
 
   return (
-    <div className="products p-5 flex flex-wrap justify-between ms:p-2.5">
+    <div ref={refDiv}  className="products p-5 flex flex-wrap justify-between ms:p-2.5">
       {
         allProducts.length > 0 ? (allProducts.map((item) => (
           <Product

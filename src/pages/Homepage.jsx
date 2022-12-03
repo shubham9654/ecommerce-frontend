@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllProductsAction } from "../store/actions/product.action";
 import Announcement from "../components/Announcement";
@@ -10,6 +10,7 @@ import Products from "../components/Products";
 import Slider from "../components/Slider";
 
 const Homepage = () => {
+  const myRef = useRef(null);
   const dispatch = useDispatch();
   const allProductFromStore  = useSelector(state => state?.products?.allProducts || []);
 
@@ -17,13 +18,15 @@ const Homepage = () => {
     dispatch(getAllProductsAction({ }));
   }, []);
 
+  const executeScroll = () => myRef.current.scrollIntoView()    
+
   return (
     <>
       <Announcement />
       <Navbar />
-      <Slider />
+      <Slider executeScroll={executeScroll} />
       <Categories />
-      <Products allProducts={allProductFromStore} />
+      <Products refDiv={myRef} allProducts={allProductFromStore} />
       <Newsletter />
       <Footer />
     </>

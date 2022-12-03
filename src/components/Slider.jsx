@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@mui/icons-material"
 import { sliderItems } from "../utils/data";
 
-const Slider = () => {
+const Slider = ({ executeScroll }) => {
   const [slideIndex, setSlideIndex] = useState(0);
 
   const handleClick = (side) => {
@@ -12,6 +12,7 @@ const Slider = () => {
       setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
     }
   }
+
 
   return (
     <div className="slider w-full relative overflow-hidden" style={{ height: "calc(100vh - 4rem)"}}>
@@ -34,7 +35,7 @@ const Slider = () => {
                   <div className="w-2/4 p-12">
                     <div className="font-bold text-7xl uppercase ms:text-5xl">{el.title}</div>
                     <p className="uppercase my-12 text-xl font-medium break-all	w-4/5 ms:text-lg">{el.desc}</p>
-                    <button className="p-2.5 cursor-pointer text-x 0l bg-transparent uppercase border-2 border-solid border-slate-500	">shop Now</button>
+                    <button onClick={executeScroll} className="p-2.5 cursor-pointer text-x 0l bg-transparent uppercase border-2 border-solid border-slate-500	">shop Now</button>
                   </div>
                 </div>
               ))
