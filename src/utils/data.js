@@ -29,58 +29,61 @@ export const categories = [
     id: 1,
     img: pngAssets.category.category_img1,
     title: "SHIRT STYLE!",
+    category: "shirt"
   },
   {
     id: 2,
     img: pngAssets.category.category_img2,
     title: "LOUNGEWEAR LOVE",
+    category: "purse"
   },
   {
     id: 3,
     img: pngAssets.category.category_img3,
     title: "LIGHT JACKETS",
+    category: "jacket"
   },
 ];
 
-export const popularProducts = [
-  {
-    id:1,
-    img: pngAssets.products.product1
-  },
-  {
-    id:2,
-    img: pngAssets.products.product2
-  },
-  {
-    id:3,
-    img: pngAssets.products.product3
-  },
-  {
-    id:4,
-    img: pngAssets.products.product4
-  },
-  {
-    id:5,
-    img: pngAssets.products.product5
-  },
-  {
-    id:6,
-    img: pngAssets.products.product6
-  },
-  {
-    id:7,
-    img: pngAssets.products.product7
-  },
-  {
-    id:8,
-    img: pngAssets.products.product8
-  },
-  {
-    id:9,
-    img: pngAssets.products.product9
-  },
-  {
-    id:10,
-    img: pngAssets.products.product10
-  }
-]
+// export const popularProducts = [
+//   {
+//     id:1,
+//     img: pngAssets.products.product1
+//   },
+//   {
+//     id:2,
+//     img: pngAssets.products.product2
+//   },
+//   {
+//     id:3,
+//     img: pngAssets.products.product3
+//   },
+//   {
+//     id:4,
+//     img: pngAssets.products.product4
+//   },
+//   {
+//     id:5,
+//     img: pngAssets.products.product5
+//   },
+//   {
+//     id:6,
+//     img: pngAssets.products.product6
+//   },
+//   {
+//     id:7,
+//     img: pngAssets.products.product7
+//   },
+//   {
+//     id:8,
+//     img: pngAssets.products.product8
+//   },
+//   {
+//     id:9,
+//     img: pngAssets.products.product9
+//   },
+//   {
+//     id:10,
+//     img: pngAssets.products.product10
+//   }
+// ]
