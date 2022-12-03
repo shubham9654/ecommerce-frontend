@@ -25,12 +25,22 @@ const Navbar = () => {
         </div>
       </div>
       <div className="flex-[1] flex items-center justify-end  ms:justify-center ms:flex-[2]">
-        <span className="mx-2.5 cursor-pointer text-sm  ms:text-xs ms:mx-[5px]">Register</span>
-        <span className="mx-2.5 cursor-pointer text-sm ms:text-xs ms:mx-[5px]">Sign In</span>
+        <span className="mx-2.5 cursor-pointer text-sm  ms:text-xs ms:mx-[5px]">
+          <Link to="/register">
+            Register
+          </Link>
+        </span>
+        <span className="mx-2.5 cursor-pointer text-sm ms:text-xs ms:mx-[5px]">
+          <Link to="/login">
+            Sign In
+          </Link>
+        </span>
         <span className="mx-2.5 cursor-pointer cart ms:text-xs ms:mx-[5px]">
-          <Badge badgeContent={4} color="primary">
-            <ShoppingCartOutlined />
-          </Badge>
+          <Link to="/cart">
+            <Badge badgeContent={4} color="primary">
+              <ShoppingCartOutlined />
+            </Badge>
+          </Link>
         </span>
       </div>
     </div>

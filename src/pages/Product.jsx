@@ -1,8 +1,7 @@
 import { Add, Remove } from "@mui/icons-material";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from "react-router-dom";
-// import { pngAssets } from "../assets/asset"
 import Announcement from "../components/Announcement"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
@@ -14,9 +13,20 @@ const Product = () => {
   const { productId } = useParams();
   const productData  = useSelector(state => state.products.selectedProduct);
 
+  const [quantity, setQuantity] = useState(1)
+
   useEffect(() => {
     dispatch(getSingleProductAction({ productId }));
   }, [productId]);
+
+
+  const hanldeQuantity = ({ type }) => {
+    if (type === 'inc') {
+      setQuantity(quantity+1)
+    } else {
+      quantity > 1 && setQuantity(quantity-1)
+    }
+  };
 
   return (
     <div className="product_page">
@@ -56,13 +66,19 @@ const Product = () => {
 
           <div className="flex items-center justify-between w-1/2 ms:w-full">
             <div className="flex items-center font-bold	">
-              <Remove className="cursor-pointer"/>
+              <Remove
+                className="cursor-pointer"
+                onClick={() => hanldeQuantity({ type: 'desc'})}
+              />
               <span
                 className="flex items-center justify-center w-[30px] h-[30px] rounded-lg border border-solid border-teal-500 mx-1.5"
               >
-                1
+                {quantity}
               </span>
-              <Add className="cursor-pointer"/>
+              <Add
+                className="cursor-pointer"
+                onClick={() => hanldeQuantity({ type: 'inc'})}
+              />
             </div>
             <button className="p-2.5 border-2 border-solid border-teal-500 font-medium bg-white hover:bg-slate-100">
               Add to Cart
