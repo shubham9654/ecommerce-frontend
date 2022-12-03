@@ -15,7 +15,7 @@ const Slider = ({ executeScroll }) => {
 
 
   return (
-    <div className="slider w-full relative overflow-hidden" style={{ height: "calc(100vh - 4rem)"}}>
+    <div className="slider w-screen relative overflow-hidden ms:hidden" style={{ height: "calc(100vh - 4rem)"}}>
       <span
         className="w-12	h-12 bg-slate-300 rounded-full flex items-center justify-center absolute top-0 bottom-0 left-2.5 m-auto	cursor-pointer z-50 opacity-50 ms:hidden"
         onClick={() => handleClick("left")}

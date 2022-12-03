@@ -28,13 +28,13 @@ export const categories = [
   {
     id: 1,
     img: pngAssets.category.category_img1,
-    title: "SHIRT STYLE!",
+    title: "STYLISH SHIRT",
     category: "shirt"
   },
   {
     id: 2,
     img: pngAssets.category.category_img2,
-    title: "LOUNGEWEAR LOVE",
+    title: "LOVELY PURSE",
     category: "purse"
   },
   {

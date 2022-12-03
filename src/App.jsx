@@ -13,7 +13,7 @@ import NotFound from "./pages/NotFound";
 
 const App = () => {
   return (
-    <div className="app">
+    <div className="app overflow-hidden">
       <Routes>
         <Route path="/" element={<Homepage />}></Route>
         <Route path="/login" element={<Login />}></Route>

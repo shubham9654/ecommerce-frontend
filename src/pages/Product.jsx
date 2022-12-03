@@ -1,18 +1,21 @@
 import { Add, Remove } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Announcement from "../components/Announcement"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
 import Newsletter from "../components/Newsletter"
+import { addCartAction } from "../store/actions/cart.action";
 import { getSingleProductAction } from "../store/actions/product.action";
 
 const Product = () => {
   const dispatch = useDispatch();
   const { productId } = useParams();
+  const navigate = useNavigate();
   const productData  = useSelector(state => state.products.selectedProduct);
 
+  // const selected
   const [quantity, setQuantity] = useState(1)
 
   useEffect(() => {
@@ -20,13 +23,21 @@ const Product = () => {
   }, [productId]);
 
 
-  const hanldeQuantity = ({ type }) => {
+  const handleQuantity = ({ type }) => {
     if (type === 'inc') {
       setQuantity(quantity+1)
     } else {
       quantity > 1 && setQuantity(quantity-1)
     }
   };
+
+  const handleAddToCart = () => {
+    dispatch(addCartAction({
+      product: productData,
+      quantity
+    }));
+    navigate('/cart')
+  }
 
   return (
     <div className="product_page">
@@ -68,7 +79,7 @@ const Product = () => {
             <div className="flex items-center font-bold	">
               <Remove
                 className="cursor-pointer"
-                onClick={() => hanldeQuantity({ type: 'desc'})}
+                onClick={() => handleQuantity({ type: 'desc'})}
               />
               <span
                 className="flex items-center justify-center w-[30px] h-[30px] rounded-lg border border-solid border-teal-500 mx-1.5"
@@ -77,10 +88,13 @@ const Product = () => {
               </span>
               <Add
                 className="cursor-pointer"
-                onClick={() => hanldeQuantity({ type: 'inc'})}
+                onClick={() => handleQuantity({ type: 'inc'})}
               />
             </div>
-            <button className="p-2.5 border-2 border-solid border-teal-500 font-medium bg-white hover:bg-slate-100">
+            <button
+              className="p-2.5 border-2 border-solid border-teal-500 font-medium bg-white hover:bg-slate-100"
+              onClick={() => handleAddToCart()}
+            >
               Add to Cart
             </button>
           </div>
