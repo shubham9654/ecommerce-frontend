@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="flex ms:flex-col">
       <div className="flex-[1] flex flex-col p-5">
         <Link to="/">
-          <h1 className="text-3xl font-bold">Zathura</h1>
+          <h1 className="text-3xl font-bold">Ekart</h1>
         </Link>
         <div className="my-5">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates architecto saepe facilis ab. Praesentium, beatae? Nobis nulla consequatur magni tempora.
