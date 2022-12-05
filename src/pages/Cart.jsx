@@ -25,19 +25,12 @@ const Cart = () => {
 
   const handleCartUpdate = ({ index, inc, desc}) => {
     let myCart = { ...cartFromState }
-    if (inc) {
-      myCart.products[index].selectedQuantity = myCart.products[index].selectedQuantity + 1
-      myCart.products[index].totalPrice = myCart.products[index].totalPrice + extractNum(myCart.products[index].price)
+    if (inc || desc) {
+      myCart.products[index].selectedQuantity = myCart.products[index].selectedQuantity + 1 * (inc ? 1 : -1)
+      myCart.products[index].totalPrice = myCart.products[index].totalPrice + (extractNum(myCart.products[index].price)) * (inc ? 1 : -1)
       myCart = {
         ...myCart,
-        totalPrice: myCart.totalPrice + extractNum(myCart.products[index].price)
-      }
-    } else if (desc) {
-      myCart.products[index].selectedQuantity = myCart.products[index].selectedQuantity - 1
-      myCart.products[index].totalPrice = myCart.products[index].totalPrice - extractNum(myCart.products[index].price)
-      myCart = {
-        ...myCart,
-        totalPrice: myCart.totalPrice - extractNum(myCart.products[index].price)
+        totalPrice: myCart.totalPrice + (extractNum(myCart.products[index].price)) * (inc ? 1 : -1)
       }
     } else {
       myCart = {

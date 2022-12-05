@@ -1,9 +1,14 @@
 import { Close } from "@mui/icons-material"
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { Link, useNavigate } from "react-router-dom"
+import { createUserAction } from "../store/actions/auth.action"
 import { validateEmail, validateName, validatePassword, validateUsername } from "../utils/global.helper"
 
 const Register = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [registerForm, setRegisterForm] = useState({
     name: {
       value: '',
@@ -38,6 +43,21 @@ const Register = () => {
     })
   }
 
+  const registerApiCallback = ({ status, value, msg}) => {
+    if (status === 200) {
+      navigate('/login');
+    } else {
+      setRegisterForm({
+        ...registerForm,
+        [value]: {
+          ...registerForm[value],
+          isError: true,
+          errorText: msg
+        }
+      })
+    }
+  }
+
   const handleRegisterSubmit = (event) => {
     event.preventDefault()
 
@@ -48,7 +68,12 @@ const Register = () => {
     const isValidPassword = validatePassword(registerForm.password?.value || '');
   
     if (isValidName && isValidUsername && isValidEmail && isValidPassword) {
-      console.log()
+      dispatch(createUserAction({
+        name: registerPayload.name.value,
+        username: registerPayload.username.value,
+        email: registerPayload.email.value,
+        password: registerPayload.password.value
+      }, registerApiCallback));
     } else {
       if(!isValidName) {
         registerPayload = {
