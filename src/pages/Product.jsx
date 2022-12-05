@@ -11,8 +11,8 @@ import { getSingleProductAction } from "../store/actions/product.action";
 
 const Product = () => {
   const dispatch = useDispatch();
-  const { productId } = useParams();
   const navigate = useNavigate();
+  const { productId } = useParams();
   const productData  = useSelector(state => state.products.selectedProduct);
 
   // const selected
