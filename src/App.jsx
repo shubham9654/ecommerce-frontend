@@ -10,6 +10,7 @@ import Product from "./pages/Product";
 import ProductList from "./pages/ProductList";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
+import Success from './pages/Success';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/product" element={<Product />}></Route>
         <Route path="/product/:productId" element={<Product />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/checkout-success" element={<Success />}></Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
       <ToastContainer />

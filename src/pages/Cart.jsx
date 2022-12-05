@@ -30,7 +30,6 @@ const Cart = () => {
       myCart.products[index].totalPrice = myCart.products[index].totalPrice + extractNum(myCart.products[index].price)
       myCart = {
         ...myCart,
-        
         totalPrice: myCart.totalPrice + extractNum(myCart.products[index].price)
       }
     } else if (desc) {
