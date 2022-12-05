@@ -2,9 +2,11 @@ import { Badge } from "@mui/material";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Search, ShoppingCartOutlined } from "@mui/icons-material";
+import { svgAssets } from "../assets/asset";
 
 const Navbar = () => {
-  const cartQuantity  = useSelector(state => state.cart.cartQuantity);
+  const cartQuantity = useSelector(state => state.cart.cartQuantity);
+  const userRedux = useSelector(state => state.user);
 
   return (
     <div
@@ -27,24 +29,40 @@ const Navbar = () => {
           <Search className="text-slate-400" />
         </div>
       </div>
-      <div className="flex-[1] flex items-center justify-end  ms:justify-center ms:flex-[2]">
-        <span className="mx-2.5 cursor-pointer text-sm  ms:text-xs ms:mx-[5px]">
-          <Link to="/register">
-            Register
-          </Link>
-        </span>
-        <span className="mx-2.5 cursor-pointer text-sm ms:text-xs ms:mx-[5px]">
-          <Link to="/login">
-            Sign In
-          </Link>
-        </span>
-        <span className="mx-2.5 cursor-pointer cart ms:text-xs ms:mx-[5px]">
-          <Link to="/cart">
-            <Badge badgeContent={cartQuantity} color="primary">
-              <ShoppingCartOutlined />
-            </Badge>
-          </Link>
-        </span>
+      <div className="flex-[1] flex items-center justify-end ms:flex-[2] ms:justify-end ">
+        {
+          userRedux.isAuthenticated ? (
+            <>
+              <span className="mx-2.5 cursor-pointer cart ms:text-xs ms:mx-[5px]">
+                <Link to="/cart">
+                  <Badge badgeContent={cartQuantity} color="primary">
+                    <ShoppingCartOutlined />
+                  </Badge>
+                </Link>
+              </span>
+              <img class="w-9	h-9 mx-2" alt="profile_avatar" src={svgAssets.avatar}></img>
+            </>
+          ) : (
+            <>
+              <span className="mx-2.5 cursor-pointer text-sm  ms:text-xs ms:mx-[5px]">
+                <Link to="/register">
+                  Register
+                </Link>
+              </span>
+              <span className="mx-2.5 cursor-pointer text-sm ms:text-xs ms:mx-[5px]">
+                <Link to="/login">
+                  Sign In
+                </Link>
+              </span>
+              <span className="mx-2.5 cursor-pointer cart ms:text-xs ms:mx-[5px]">
+                <Link to="/cart">
+                  <Badge badgeContent={cartQuantity} color="primary">
+                    <ShoppingCartOutlined />
+                  </Badge>
+                </Link>
+              </span>
+            </>
+          )}
       </div>
     </div>
   )
