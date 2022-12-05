@@ -1,6 +1,6 @@
 import { all, call, put, takeEvery } from "redux-saga/effects";
-import { createUserService } from "../services/api/auth.api";
-import { createUser } from "../store/actions/auth.action";
+import { createUserService, loginUserService } from "../services/api/auth.api";
+import { createUser, loginUser, setLoginUserAction } from "../store/actions/auth.action";
 
 
 function* createUserSaga({ payload, callback }) {
@@ -17,9 +17,21 @@ function* createUserSaga({ payload, callback }) {
   };
 };
 
+function* loginUserSaga({ payload, callback }) {
+  try {
+    const user = yield call(loginUserService, payload);
+    yield put(setLoginUserAction({ userDetails: user?.data || {}}))
+    yield call(callback, { status: 200 })
+  } catch (err) {
+    yield call(callback, { status: 401 })
+    console.log(err)
+  };
+};
+
 function* authSaga() {
   yield all([
     takeEvery(createUser, createUserSaga),
+    takeEvery(loginUser, loginUserSaga),
   ])
 }
 
