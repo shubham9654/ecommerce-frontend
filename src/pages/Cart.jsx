@@ -1,21 +1,55 @@
 import { Add, AddShoppingCartOutlined, NavigateBeforeOutlined, NavigateNextOutlined, Remove } from "@mui/icons-material";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import { updateProductToCartAction } from "../store/actions/cart.action";
 import { createPaymentAction } from "../store/actions/payment.action";
+import { extractNum } from "../utils/global.helper";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const cartFromState = useSelector(state => state.cart);
 
+  const [cartUpdate, setCartUpdate] = useState(1);
+
   const handleCheckout = () => {
     dispatch(createPaymentAction({
       cartItems: cartFromState.products,
       userId: ''
     }));
+  }
+
+  const handleCartUpdate = ({ index, inc, desc}) => {
+    let myCart = { ...cartFromState }
+    if (inc) {
+      myCart.products[index].selectedQuantity = myCart.products[index].selectedQuantity + 1
+      myCart.products[index].totalPrice = myCart.products[index].totalPrice + extractNum(myCart.products[index].price)
+      myCart = {
+        ...myCart,
+        
+        totalPrice: myCart.totalPrice + extractNum(myCart.products[index].price)
+      }
+    } else if (desc) {
+      myCart.products[index].selectedQuantity = myCart.products[index].selectedQuantity - 1
+      myCart.products[index].totalPrice = myCart.products[index].totalPrice - extractNum(myCart.products[index].price)
+      myCart = {
+        ...myCart,
+        totalPrice: myCart.totalPrice - extractNum(myCart.products[index].price)
+      }
+    } else {
+      myCart = {
+        ...myCart,
+        cartQuantity: myCart.cartQuantity - 1,
+        totalPrice: myCart.totalPrice - extractNum(myCart.products[index].totalPrice)
+      }
+      myCart.products = myCart.products.filter((item,i) => i !== index)
+    }
+    dispatch(updateProductToCartAction(myCart));
+    setCartUpdate(cartUpdate + 1)
   }
 
   return (
@@ -59,22 +93,36 @@ const Cart = () => {
                           )
                         }
                         <div className="flex justify-center ms:flex-col ms:mb-2.5">
-                          <div className="flex-2 flex">
+                          <div className="w-2/3 flex ms:w-full">
                             <img className="w-[200px] h-[200px]" alt="product_detail_img" src={item.img} />
                             <div className="p-5 flex flex-col justify-around">
                               <span><b>Product: </b>{item.title}</span>
-                              <span><b>Id: </b>{item._id}</span>
+                              <span><b>Quantity: </b>{item?.selectedQuantity || 1}</span>
                               <span className="w-5 h-5 rounded-full bg-slate-400"></span>
                               <span><b>Size: </b> M</span>
                             </div>
                           </div>
-                          <div className="flex-1 flex flex-col items-center justify-center ms:flex-row ms:justify-between">
-                            <div className="flex items-center">
-                              {/* <Remove />
-                                  <span className="text-2xl m-1.5">2</span>
-                                  <Add /> */}
+                          <div className="w-1/3 flex flex-col items-center justify-center ms:w-full ms:flex-row ms:justify-between">
+                            
+                            {/* <DeleteOutlined style={{fontSize: 30}} /> */}
+                            <div className="flex items-center ">
+                              <Remove
+                                className="cursor-pointer"
+                                onClick = {(e) => item.selectedQuantity > 1 && handleCartUpdate({ index, desc: true })}
+                              />
+                                <span className="text-2xl mx-1.5">{item?.selectedQuantity || 1}</span>
+                              <Add
+                                className="cursor-pointer"
+                                onClick = {(e) => handleCartUpdate({ index, inc: true })}
+                              />
                             </div>
-                            <span className="text-3xl font-extralight"> $22 </span>
+                            <span className="text-3xl font-extralight my-2.5 ms:m-0"> ${item.totalPrice}</span>
+                            <span
+                              className="cursor-pointer font-medium"
+                              onClick = {(e) => handleCartUpdate({ index })}
+                            >
+                              Remove
+                            </span>
                           </div>
                         </div>
                       </div>

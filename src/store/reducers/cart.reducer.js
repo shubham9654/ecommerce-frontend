@@ -1,5 +1,5 @@
 import { extractNum } from "../../utils/global.helper";
-import { addCart } from "../actions/cart.action";
+import { addProductToCart, updateProductToCart } from "../actions/cart.action";
 
 const initState = {
   products: [],
@@ -7,13 +7,17 @@ const initState = {
   totalPrice: 0
 };
 
-export const cartReducer = (state=initState, action) => {
+export const cartReducer = (state = initState, action) => {
   switch (action.type) {
-    case addCart:
+    case addProductToCart:
       return {
         products: [...state.products, action.payload.product],
         cartQuantity: state.cartQuantity + 1,
         totalPrice: state.totalPrice + (action.payload.quantity * extractNum(action.payload.product.price))
+      }
+    case updateProductToCart:
+      return {
+        ...action.payload
       }
     default:
       return state

@@ -1,3 +1,3 @@
 export const extractNum = (str) => {
-  return str.replace(/[^0-9]/g,'');
+  return Number(str.toString().replace(/[^0-9]/g,''));
 }

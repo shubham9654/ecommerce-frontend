@@ -2,12 +2,13 @@ import { Add, Remove } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from "react-router-dom";
+import { addProductToCartAction } from "../store/actions/cart.action";
+import { getSingleProductAction } from "../store/actions/product.action";
+import { extractNum } from "../utils/global.helper";
 import Announcement from "../components/Announcement"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
 import Newsletter from "../components/Newsletter"
-import { addCartAction } from "../store/actions/cart.action";
-import { getSingleProductAction } from "../store/actions/product.action";
 
 const Product = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,8 @@ const Product = () => {
   const productData  = useSelector(state => state.products.selectedProduct);
 
   // const selected
+  const [size, setSize] = useState('M')
+  const [color, setColor] = useState('gray')
   const [quantity, setQuantity] = useState(1)
 
   useEffect(() => {
@@ -32,8 +35,14 @@ const Product = () => {
   };
 
   const handleAddToCart = () => {
-    dispatch(addCartAction({
-      product: productData,
+    dispatch(addProductToCartAction({
+      product: {
+        ...productData,
+        selectedSize: size,
+        selectedColor: color,
+        selectedQuantity: quantity,
+        totalPrice: extractNum(productData.price) * quantity
+      },
       quantity
     }));
     navigate('/cart')
@@ -67,9 +76,9 @@ const Product = () => {
               <label className="text-xl font-extralight capitalize mr-2.5">Size</label>
               <select className="border border-gray-500 focus:outline-none p-1.5 cursor-pointer uppercase">
                 <option className="uppercase">{productData.size}</option>
-                {/* <option className="uppercase">Xl</option>
-                <option className="uppercase">L</option>
-                <option className="uppercase">M</option> */}
+                <option className="uppercase" disabled>Xl</option>
+                <option className="uppercase" disabled>L</option>
+                <option className="uppercase">M</option>
               </select>
             </div>
 

@@ -1,7 +1,13 @@
-export const addCart = "ADD_CART";
-export const setCart = "SET_CART";
+export const addProductToCart = "ADD_PRODUCT_TO_CART";
+export const updateProductToCart = "UPDATE_PRODUCT_TO_CART";
 
-export const addCartAction = (payload) => ({
-  type: addCart,
+export const addProductToCartAction = (payload) => ({
+  type: addProductToCart,
+  payload
+});
+
+
+export const updateProductToCartAction = (payload) => ({
+  type: updateProductToCart,
   payload
 });
