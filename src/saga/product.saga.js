@@ -19,7 +19,7 @@ function* getAllProductSaga({ payload }) {
     yield put(setAllProductAction({ data: response?.data?.products || []}));
   } catch (err) {
     yield put(setAllProductAction({ data: [] }));
-    console.log({ err });
+    console.log(err, err.response);
   };
 };
 
