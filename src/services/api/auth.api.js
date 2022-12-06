@@ -1,10 +1,11 @@
 import axios from 'axios'
-import { baseUrl } from './common.api'
+import { baseUrl, headers } from './common.api'
 
 export const createUserService = async (payload) => {
   const user = await axios.post(
     `${baseUrl}/auth/register`,
-    payload
+    payload,
+    headers
   )
   return user;
 };
@@ -12,7 +13,8 @@ export const createUserService = async (payload) => {
 export const loginUserService = async (payload) => {
   const user = await axios.post(
     `${baseUrl}/auth/login`,
-    payload
+    payload,
+    headers
   )
   return user;
 };
