@@ -8,7 +8,7 @@ export const getSingleProductService = async ({ productId }) => {
       headers: {
         'Access-Control-Allow-Origin' : '*',
         'Access-Control-Allow-Headers': '*',
-        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        'Content-Type': 'application/json'
       }
     }
   )
@@ -23,7 +23,7 @@ export const getAllProductService = async ({ category }) => {
       headers: {
         'Access-Control-Allow-Origin' : '*',
         'Access-Control-Allow-Headers': '*',
-        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        'Content-Type': 'application/json'
       }
     }
   )
