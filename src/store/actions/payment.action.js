@@ -1,6 +1,7 @@
 export const createPayment = "CREATE_PAYMENT";
 
-export const createPaymentAction = (payload) => ({
+export const createPaymentAction = (payload, callback) => ({
   type: createPayment,
-  payload
+  payload,
+  callback
 });

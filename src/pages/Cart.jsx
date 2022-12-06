@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import { setLoginUserAction } from "../store/actions/auth.action";
 import { updateProductToCartAction } from "../store/actions/cart.action";
 import { createPaymentAction } from "../store/actions/payment.action";
 import { extractNum } from "../utils/global.helper";
@@ -12,19 +13,35 @@ import { extractNum } from "../utils/global.helper";
 const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const cartFromState = useSelector(state => state.cart);
+  const cartRedux = useSelector(state => state.cart);
+  const userRedux = useSelector(state => state.user);
 
   const [cartUpdate, setCartUpdate] = useState(1);
 
+  const paymentCallback = async () => {
+    dispatch(setLoginUserAction({
+      userDetails: {},
+      accessToken: '',
+      isLogin: false
+    }))
+    navigate('/login')
+    alert('invalid token or token expire!')
+  }
+
   const handleCheckout = () => {
-    dispatch(createPaymentAction({
-      cartItems: cartFromState.products,
-      userId: ''
-    }));
+    if (userRedux?.isLogin) {
+      dispatch(createPaymentAction({
+        cartItems: cartRedux.products,
+        userId: userRedux.userDetails._id,
+        token: userRedux.accessToken
+      }, paymentCallback));
+    } else {
+      navigate('/login')
+    }
   }
 
   const handleCartUpdate = ({ index, inc, desc}) => {
-    let myCart = { ...cartFromState }
+    let myCart = { ...cartRedux }
     if (inc || desc) {
       myCart.products[index].selectedQuantity = myCart.products[index].selectedQuantity + 1 * (inc ? 1 : -1)
       myCart.products[index].totalPrice = myCart.products[index].totalPrice + (extractNum(myCart.products[index].price)) * (inc ? 1 : -1)
@@ -51,7 +68,7 @@ const Cart = () => {
       <div className="p-5">
         <h1 className="text-3xl font-light text-center">Your Cart</h1>
         {
-          cartFromState?.products?.length > 0 ? (
+          cartRedux?.products?.length > 0 ? (
             <>
               <div className="flex items-center justify-between mb-5 ms:hidden">
                 <button
@@ -77,7 +94,7 @@ const Cart = () => {
               <div className="flex ms:flex-col">
                 <div className="flex-[3] ">
                   {
-                    cartFromState.products.map((item, index) => (
+                    cartRedux.products.map((item, index) => (
                       <div key={index}>
                         {
                           index !== 0 && (
@@ -125,7 +142,7 @@ const Cart = () => {
                   <h1 className="text-3xl font-light">Order Summary</h1>
                   <div className="my-7 flex items-center justify-between">
                     <span>Subtotal</span>
-                    <span>$ {cartFromState.totalPrice}</span>
+                    <span>$ {cartRedux.totalPrice}</span>
                   </div>
                   <div className="my-7 flex items-center justify-between">
                     <span>Estimated Shipping</span>
@@ -137,7 +154,7 @@ const Cart = () => {
                   </div>
                   <div className="my-7 flex items-center justify-between text-2xl font-medium">
                     <span>Total</span>
-                    <span>$ {cartFromState.totalPrice}</span>
+                    <span>$ {cartRedux.totalPrice}</span>
                   </div>
                   <button
                     className="p-2.5 border w-full bg-black text-white"
@@ -159,7 +176,7 @@ const Cart = () => {
             </div>
           )}
       </div>
-      {cartFromState?.products?.length === 0 ? (<div className="bg-slate-300 h-[1px]"></div>) : null}
+      {cartRedux?.products?.length === 0 ? (<div className="bg-slate-300 h-[1px]"></div>) : null}
       <Footer />
     </div>
   )

@@ -31,7 +31,7 @@ const Navbar = () => {
       </div>
       <div className="flex-[1] flex items-center justify-end ms:flex-[2] ms:justify-end ">
         {
-          userRedux.isAuthenticated ? (
+          userRedux.isLogin ? (
             <>
               <span className="mx-2.5 cursor-pointer cart ms:text-xs ms:mx-[5px]">
                 <Link to="/cart">
@@ -40,7 +40,7 @@ const Navbar = () => {
                   </Badge>
                 </Link>
               </span>
-              <img class="w-9	h-9 mx-2" alt="profile_avatar" src={svgAssets.avatar}></img>
+              <img className="w-9	h-9 mx-2" alt="profile_avatar" src={svgAssets.avatar}></img>
             </>
           ) : (
             <>

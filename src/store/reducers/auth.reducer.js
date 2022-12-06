@@ -3,7 +3,7 @@ import { setLoginUser } from "../actions/auth.action";
 const initState = {
   userDetails: {},
   accessToken: '',
-  isAuthenticated: false
+  isLogin: false
 };
 
 export const userReducer = (state = initState, action) => {
@@ -12,7 +12,7 @@ export const userReducer = (state = initState, action) => {
       return {
         userDetails: action.payload.userDetails.user,
         accessToken: action.payload.userDetails.accessToken,
-        isAuthenticated: true
+        isLogin: true
       }
     default:
       return state
