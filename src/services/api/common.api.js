@@ -1,7 +1,7 @@
-export const baseUrl = "http://54.165.184.12:8080/api/v1";
+export const baseUrl = "https://www.bhking.com/api/v1"
 
 export const headers = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': '*',
-  'Content-Type': 'application/json'
+  headers: {
+    'Content-Type': 'application/json'
+  }
 }

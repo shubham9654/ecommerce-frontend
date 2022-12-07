@@ -1,16 +1,10 @@
 import axios from 'axios'
-import { baseUrl } from './common.api'
+import { baseUrl, headers } from './common.api'
 
 export const getSingleProductService = async ({ productId }) => {
   const products = await axios.get(
     `${baseUrl}/products/${productId}`,
-    {
-      headers: {
-        'Access-Control-Allow-Origin' : '*',
-        'Access-Control-Allow-Headers': '*',
-        'Content-Type': 'application/json'
-      }
-    }
+    headers
   )
   return products;
 };
